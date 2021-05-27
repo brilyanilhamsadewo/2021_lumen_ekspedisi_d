@@ -42,6 +42,7 @@ class AuthServiceProvider extends ServiceProvider
                 $explode = explode(' ', $request->header('Authorization'));
                 //KEMUDIAN FIND USER BERDASARKAN TOKEN YANG DITERIMA
                 return User::where('api_token', $explode[1])->first();
+                return User::where('api_token', end($explode))->first();
             }
         });
     }
